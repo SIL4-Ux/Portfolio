@@ -280,7 +280,7 @@ body {
 
 .profile-content {
     width: 100%;
-    max-width: 1100px;
+    max-width: 1400px;
     margin: 0 auto;
 }
 
@@ -311,8 +311,8 @@ body {
 .profile-picture {
     position: relative;
     flex-shrink: 0;
-    width: 190px;
-    height: 190px;
+    width: 200px;
+    height: 200px;
     cursor: pointer;
 }
 
