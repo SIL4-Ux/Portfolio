@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cesmar C. Pebres - Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Main Container -->
+    <div class="page-container">
+        
+        <!-- HOME PAGE -->
+        <section id="home" class="page active">
+            <div class="home-content">
+                <div class="welcome-text">
+                    <h1 class="home-title">Welcome to My Portfolio</h1>
+                    <p class="home-subtitle">Get to know me more!</p>
+                    <button class="explore-btn" onclick="navigateToPage('profile')">
+                        Explore My Journey
+                        <span class="btn-arrow">→</span>
+                    </button>
+                </div>
+                <div class="decorative-elements">
+                    <div class="floating-shape shape-1"></div>
+                    <div class="floating-shape shape-2"></div>
+                    <div class="floating-shape shape-3"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROFILE PAGE -->
+        <!-- ───────── PROFILE MODAL (place anywhere inside <body>) ───────── -->
+        <div class="modal-backdrop" id="modalBackdrop" onclick="closeModal()"></div>
+        <div class="modal" id="modal">
+            <div class="modal-img-wrap">
+                <!-- Close -->
+                <button class="modal-close" onclick="closeModal()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                        <line x1="18" y1="6" x2="6" y2="18"/>
+                        <line x1="6" y1="6" x2="18" y2="18"/>
+                    </svg>
+                </button>
+                <!-- Prev -->
+                <button class="modal-arrow prev" onclick="changeSlide(-1)">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="15 18 9 12 15 6"/>
+                    </svg>
+                </button>
+                <!-- Next -->
+                <button class="modal-arrow next" onclick="changeSlide(1)">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="9 6 15 12 9 18"/>
+                    </svg>
+                </button>
+                <!-- Main image -->
+                <img id="modalImg" src="profile/profile.jpg" alt="Profile photo"/>
+            </div>
+            <!-- Dot indicators (auto-built by JS) -->
+            <div class="modal-dots" id="modalDots"></div>
+            <!-- Caption -->
+            <div class="modal-caption" id="modalCaption">Profile Photo</div>
+        </div>
+
+        <!-- ───────── PROFILE SECTION ───────── -->
+        <section id="profile" class="page">
+            <div class="profile-background">
+                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&q=80" alt="Background" class="bg-image">
+                <div class="bg-overlay"></div>
+            </div>
+
+            <div class="page-header">
+                <h2 class="page-title">Profile</h2>
+                <p class="page-description">Who I am and what I do?</p>
+            </div>
+
+            <div class="profile-content">
+                <div class="profile-card">
+
+                    <!-- Photo (clickable → opens modal) -->
+                    <div class="profile-picture" onclick="openModal()">
+                        <div class="profile-ring"></div>
+                        <img src="profile/profile.jpg" alt="Cesmar Pebres" class="profile-img">
+                        <!-- expand hint icon (visible on hover, above the blur) -->
+                        <div class="expand-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="15 3 21 3 21 9"/>
+                                <polyline points="9 21 3 21 3 15"/>
+                                <line x1="21" y1="3" x2="14" y2="10"/>
+                                <line x1="3" y1="21" x2="10" y2="14"/>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Info -->
+                    <div class="profile-info">
+                        <h2 class="profile-name">Cesmar C. Pebres</h2>
+                        <p class="profile-bio">
+                            I'm a passionate Computer Science student with a deep love for creating meaningful technology.
+                            Currently in my fourth year at EARIST Cavite Campus, I thrive on turning complex problems into
+                            elegant solutions through code. My journey in tech is driven by curiosity and a genuine desire
+                            to make an impact through innovative software development.
+                        </p>
+
+                        <div class="profile-section">
+                            <h3 class="section-label">Current Interests</h3>
+                            <div class="interest-tags">
+                                <span class="tag">Cybersecurity</span>
+                                <span class="tag">Mobile App Development</span>
+                                <span class="tag">UI/UX Design</span>
+                                <span class="tag">Game Design and Development</span>
+                                <span class="tag">Creative Coding</span>
+                                <span class="tag">Web Development</span>
+                            </div>
+                        </div>
+
+                        <div class="profile-section">
+                            <h3 class="section-label">Hobbies & Passions</h3>
+                            <div class="interest-tags">
+                                <span class="tag">Photography</span>
+                                <span class="tag">Videography</span>
+                                <span class="tag">Digital Art</span>
+                                <span class="tag">Graphic Design</span>
+                                <span class="tag">Gaming</span>
+                                <span class="tag">Learning New Tech</span>
+                            </div>
+                        </div>
+
+                        <!-- Contact (horizontal wrap) -->
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                    <circle cx="12" cy="10" r="3"/>
+                                </svg>
+                                General Trias City, Cavite
+                            </div>
+                            <div class="contact-item">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="4" width="20" height="16" rx="2"/>
+                                    <polyline points="22,6 12,13 2,6"/>
+                                </svg>
+                                pebres.cesmar@gmail.com
+                            </div>
+                            <div class="contact-item">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                                </svg>
+                                +63 994 533 7690
+                            </div>
+                        </div>
+
+                        <!-- Social icons + CV button + Preview link (single row) -->
+                        <div class="profile-bottom">
+                            <div class="social-links">
+                                <a href="https://www.linkedin.com/in/cesmar-pebres/" target="_blank" class="social-icon" aria-label="LinkedIn">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/>
+                                        <rect x="2" y="9" width="4" height="12"/>
+                                        <circle cx="4" cy="4" r="2"/>
+                                    </svg>
+                                </a>
+                                <a href="https://github.com/SIL4-Ux" target="_blank" class="social-icon" aria-label="GitHub">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                                    </svg>
+                                </a>
+                                <a href="https://ph.jobstreet.com/profiles/cesmar-pebres-R1Ll8c6XwL" target="_blank" class="social-icon" aria-label="JobStreet">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M12 2l2 7h7l-5.5 4 2 7L12 16l-5.5 4 2-7L3 9h7z"/>
+                                    </svg>
+                                </a>
+                            </div>
+
+                            <a href="resume/_CV_CESMAR_C_PEBRES.pdf" download class="cv-btn">
+                                Download CV
+                                <span class="btn-arrow">↓</span>
+                            </a>
+
+                            <a href="resume/_CV_CESMAR_C_PEBRES.pdf" target="_blank" class="preview-link">
+                                Preview Resume
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS PAGE -->
+        <section id="skills" class="page">
+            <div class="page-header">
+                <h2 class="page-title">Skills & Expertise</h2>
+                <p class="page-description">Technical proficiencies and professional capabilities</p>
+            </div>
+
+            <div class="skills-container">
+                <!-- ── Technical Skills ── -->
+                <div class="skill-group">
+                    <h3 class="skill-group-title">Technical Skills</h3>
+
+                    <div class="skill-category">
+                        <h4 class="category-name">Programming Languages</h4>
+                        <div class="skill-pills">
+                            <span class="pill">Java</span>
+                            <span class="pill">Python</span>
+                            <span class="pill">C++</span>
+                            <span class="pill">C</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h4 class="category-name">Web Technologies</h4>
+                        <div class="skill-pills">
+                            <span class="pill">HTML / CSS</span>
+                            <span class="pill">JavaScript</span>
+                            <span class="pill">PHP</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h4 class="category-name">Development</h4>
+                        <div class="skill-pills">
+                            <span class="pill">Flutter</span>
+                            <span class="pill">MySQL</span>
+                            <span class="pill">Firebase</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h4 class="category-name">Tools & Systems</h4>
+                        <div class="skill-pills">
+                            <span class="pill">VS Code</span>
+                            <span class="pill">XAMPP</span>
+                            <span class="pill">Windows</span>
+                            <span class="pill">Linux</span>
+                            <span class="pill">Git</span>
+                            <span class="pill">Networking</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── Soft Skills ── -->
+                <div class="skill-group">
+                    <h3 class="skill-group-title">Soft Skills</h3>
+
+                    <div class="soft-skills-grid">
+                        <div class="soft-skill-card">
+                            <div class="soft-skill-icon">🤝</div>
+                            <h4>Teamwork</h4>
+                            <p>Collaborative problem-solving and effective team coordination</p>
+                        </div>
+                        <div class="soft-skill-card">
+                            <div class="soft-skill-icon">💬</div>
+                            <h4>Communication</h4>
+                            <p>Clear technical documentation and stakeholder engagement</p>
+                        </div>
+                        <div class="soft-skill-card">
+                            <div class="soft-skill-icon">🔄</div>
+                            <h4>Adaptability</h4>
+                            <p>Quick learning and flexibility in dynamic environments</p>
+                        </div>
+                        <div class="soft-skill-card">
+                            <div class="soft-skill-icon">⏱️</div>
+                            <h4>Time Management</h4>
+                            <p>Efficient task prioritization and deadline adherence</p>
+                        </div>
+                        <div class="soft-skill-card">
+                            <div class="soft-skill-icon">🧩</div>
+                            <h4>Problem-Solving</h4>
+                            <p>Analytical thinking and creative solution development</p>
+                        </div>
+                        <div class="soft-skill-card">
+                            <div class="soft-skill-icon">📚</div>
+                            <h4>Willingness to Learn</h4>
+                            <p>Continuous improvement and knowledge expansion</p>
+                        </div>
+                    </div>
+
+                    <div class="languages-section">
+                        <h4 class="category-name">Languages</h4>
+                        <div class="language-items">
+                            <div class="language-item">
+                                <span class="language-name">Tagalog</span>
+                                <span class="proficiency">Native</span>
+                            </div>
+                            <div class="language-item">
+                                <span class="language-name">English</span>
+                                <span class="proficiency">Fluent</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS PAGE -->
+        <section id="projects" class="page">
+            <div class="page-header">
+                <h2 class="page-title">My Projects</h2>
+                <p class="page-description">Explore my creative and technical work</p>
+            </div>
+
+            <div class="project-tabs">
+                <button class="tab-btn active" onclick="switchProjectTab('coding')">Coding Projects</button>
+                <button class="tab-btn" onclick="switchProjectTab('photography')">Photography</button>
+                <button class="tab-btn" onclick="switchProjectTab('videography')">Videography</button>
+                <button class="tab-btn" onclick="switchProjectTab('art')">Drawings/Animations</button>
+                <button class="tab-btn" onclick="switchProjectTab('design')">Graphic Design</button>
+            </div>
+
+            <!-- Coding Projects -->
+            <div id="coding" class="project-content active">
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-icon">📚</div>
+                            <div class="badge-group">
+                                <span class="project-badge">Thesis</span>
+                                <span class="project-badge">Web Development</span>
+                            </div>
+                        </div>
+                        <h3 class="project-title">EduHR Management System</h3>
+                        <p class="project-role">Programmer / System Developer</p>
+                        <p class="project-desc">
+                            A comprehensive data management system for Angelo L. Loyola Senior High School Personnel 
+                            with automated scheduling and personnel tracking features.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Java</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">System Design</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-icon">📱</div>
+                            <div class="project-badge">Mobile App</div>
+                        </div>
+                        <h3 class="project-title">CB Cosmetics & Scents</h3>
+                        <p class="project-role">Mobile Application Developer</p>
+                        <p class="project-desc">
+                            Flutter-based mobile application for cosmetics and scents retail business with 
+                            Firebase integration for real-time data management.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Flutter</span>
+                            <span class="tech-tag">Firebase</span>
+                            <span class="tech-tag">Mobile Dev</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-icon">💰</div>
+                            <div class="project-badge">Automation</div>
+                        </div>
+                        <h3 class="project-title">Salary Computation System</h3>
+                        <p class="project-role">Python Developer</p>
+                        <p class="project-desc">
+                            Automated Python application for payroll processing that reduces manual errors 
+                            and improves accuracy in salary calculations.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Automation</span>
+                            <span class="tech-tag">Data Processing</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Photography -->
+            <div id="photography" class="project-content">
+                <div class="gallery-grid">
+                    <!--<div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800&q=80" alt="Photography">
+                        <div class="gallery-overlay">
+                            <h4>Automotive Photography</h4>
+                            <p>Capturing the beauty of machines</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80" alt="Photography">
+                        <div class="gallery-overlay">
+                            <h4>Landscape</h4>
+                            <p>Nature's grandeur</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1514565131-fce0801e5785?w=800&q=80" alt="Photography">
+                        <div class="gallery-overlay">
+                            <h4>Urban Exploration</h4>
+                            <p>City life perspectives</p>
+                        </div>
+                    </div>
+                    -->
+                    <div class="gallery-item coming-soon">
+                        <div class="coming-soon-content">
+                            <span class="coming-soon-icon">📸</span>
+                            <p>More photos coming soon...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Videography -->
+            <div id="videography" class="project-content">
+                <div class="gallery-grid">
+                    <!--<div class="gallery-item video-item">
+                        <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=800&q=80" alt="Video">
+                        <div class="gallery-overlay">
+                            <div class="play-icon">▶</div>
+                            <h4>Event Coverage</h4>
+                            <p>Cinematic storytelling</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item video-item">
+                        <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=800&q=80" alt="Video">
+                        <div class="gallery-overlay">
+                            <div class="play-icon">▶</div>
+                            <h4>Travel Vlogs</h4>
+                            <p>Journey documentation</p>
+                        </div>
+                    </div>
+                    -->
+                    <div class="gallery-item coming-soon">
+                        <div class="coming-soon-content">
+                            <span class="coming-soon-icon">🎥</span>
+                            <p>More videos coming soon...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Drawings/Animations -->
+            <div id="art" class="project-content">
+                <div class="gallery-grid">
+                    <!--<div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=800&q=80" alt="Art">
+                        <div class="gallery-overlay">
+                            <h4>Digital Illustrations</h4>
+                            <p>Creative expressions</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=800&q=80" alt="Art">
+                        <div class="gallery-overlay">
+                            <h4>Character Design</h4>
+                            <p>Bringing ideas to life</p>
+                        </div>
+                    </div>
+                    -->
+                    <div class="gallery-item coming-soon">
+                        <div class="coming-soon-content">
+                            <span class="coming-soon-icon">🎨</span>
+                            <p>More artwork coming soon...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Graphic Design -->
+            <div id="design" class="project-content">
+                <div class="gallery-grid">
+                    <!-- <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&q=80" alt="Design">
+                        <div class="gallery-overlay">
+                            <h4>Brand Identity</h4>
+                            <p>Visual communication</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?w=800&q=80" alt="Design">
+                        <div class="gallery-overlay">
+                            <h4>Poster Design</h4>
+                            <p>Typography & layout</p>
+                        </div>
+                    </div>
+                    -->
+                    <div class="gallery-item coming-soon">
+                        <div class="coming-soon-content">
+                            <span class="coming-soon-icon">✨</span>
+                            <p>More designs coming soon...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CERTIFICATES PAGE -->
+        <section id="certificates" class="page">
+            <div class="page-header">
+                <h2 class="page-title">Education & Certifications</h2>
+                <p class="page-description">Academic achievements and professional credentials</p>
+            </div>
+
+            <div class="certificates-container">
+                <div class="cert-section">
+                    <h3 class="cert-section-title">Education</h3>
+                    <div class="cert-card education-card">
+                        <div class="cert-icon">🎓</div>
+                        <div class="cert-content">
+                            <h4 class="cert-title">Bachelor of Science in Computer Science</h4>
+                            <p class="cert-institution">Eulogio "Amang" Rodriguez Institute of Science and Technology</p>
+                            <p class="cert-location">Cavite Campus</p>
+                            <p class="cert-date">October 2022 - Present</p>
+                        </div>
+                        <div class="cert-status ongoing">Ongoing</div>
+                    </div>
+                    <div class="cert-card education-card">
+                        <div class="cert-icon">🎓</div>
+                        <div class="cert-content">
+                            <h4 class="cert-title">Senior High School</h4>
+                            <p class="cert-institution">Philippine Christian University-Dasmariñas</p>
+                            <p class="cert-location">Aguinaldo Hwy, Dasmariñas, 4114 Cavite</p>
+                            <p class="cert-date"> 2020 - 2022</p>
+                        </div>
+                        <div class="cert-status completed">Completed</div>
+                    </div>
+                    <div class="cert-card education-card">
+                        <div class="cert-icon">🎓</div>
+                        <div class="cert-content">
+                            <h4 class="cert-title">Junior High School</h4>
+                            <p class="cert-institution">Gov. Luis A. Ferrer Jr. East National High School</p>
+                            <p class="cert-location">rookeside lane, General Trias, Cavite</p>
+                            <p class="cert-date"> 2016 - 2020</p>
+                        </div>
+                        <div class="cert-status completed">Completed</div>
+                    </div>
+                    <div class="cert-card education-card">
+                        <div class="cert-icon">🎓</div>
+                        <div class="cert-content">
+                            <h4 class="cert-title">Primary Education</h4>
+                            <p class="cert-institution">Sunny Brooke Elementary School</p>
+                            <p class="cert-location">Brookeside lane, General Trias, Cavite</p>
+                            <p class="cert-date">2010 - 2016</p>
+                        </div>
+                        <div class="cert-status completed">Completed</div>
+                    </div>
+                </div>
+
+                <div class="cert-section">
+                    <h3 class="cert-section-title">Professional Certifications</h3>
+                    <div class="cert-card">
+                        <div class="cert-icon">🏆</div>
+                        <div class="cert-content">
+                            <h4 class="cert-title">PhilNITS Information Technology Passport (IP)</h4>
+                            <p class="cert-institution">Philippines National IT Standards Foundation</p>
+                            <p class="cert-description">
+                                Examination Passer - Demonstrates foundational knowledge in IT fundamentals, 
+                                including management strategy, system strategy, and technology strategy.
+                            </p>
+                            <p class="cert-date">Passed: April 2025</p>
+                        </div>
+                        <div class="cert-status completed">Completed</div>
+                    </div>
+                </div>
+
+                <div class="cert-section">
+                    <h3 class="cert-section-title">Future Goals</h3>
+                    <div class="goals-grid">
+                        <div class="goal-card">
+                            <div class="goal-icon">🎯</div>
+                            <h4>Cybersecurity Certification</h4>
+                            <p>Targeting comprehensive Cybersecurity credentials.(CCNA, CISSP, etc.)</p>
+                        </div>
+                        <div class="goal-card">
+                            <div class="goal-icon">☁️</div>
+                            <h4>Cloud Platforms</h4>
+                            <p>AWS or Google Cloud certifications</p>
+                        </div>
+                        <div class="goal-card">
+                            <div class="goal-icon">📱</div>
+                            <h4>Game Development</h4>
+                            <p>Unity or Unreal Engine projects</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+            <!-- ───────── MODAL SCRIPT ───────── -->
+    <script>
+    (function () {
+        /*
+            * ── IMAGE LIST ──
+            * Add or remove entries here to control the photo carousel.
+            * src   : path to the image file
+            * caption: text shown below the image in the popup
+            */
+        const images = [
+            { src: "profile/profile.jpg",  caption: "Profile Photo" },
+            { src: "profile/photo2.jpg",   caption: "Photo 2" },
+            { src: "profile/photo3.jpg",   caption: "Photo 3" }
+        ];
+
+        let current = 0;
+
+        const modal        = document.getElementById('modal');
+        const backdrop     = document.getElementById('modalBackdrop');
+        const modalImg     = document.getElementById('modalImg');
+        const modalCaption = document.getElementById('modalCaption');
+        const dotsWrap     = document.getElementById('modalDots');
+
+        /* Build dot indicators */
+        images.forEach((_, i) => {
+            const dot        = document.createElement('div');
+            dot.className    = 'modal-dot' + (i === 0 ? ' active' : '');
+            dot.onclick      = () => goTo(i);
+            dotsWrap.appendChild(dot);
+        });
+
+        function getDots() {
+            return dotsWrap.querySelectorAll('.modal-dot');
+        }
+
+        /* ── Open / Close ── */
+        function openModal() {
+            goTo(0);
+            modal.classList.add('open');
+            backdrop.classList.add('open');
+            document.body.style.overflow = 'hidden';   // prevent bg scroll
+        }
+
+        function closeModal() {
+            modal.classList.remove('open');
+            backdrop.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        /* ── Slide to index ── */
+        function goTo(index) {
+            current = (index + images.length) % images.length;
+            modalImg.style.opacity = '0';
+
+            setTimeout(() => {
+                modalImg.src             = images[current].src;
+                modalCaption.textContent = images[current].caption;
+                modalImg.style.opacity   = '1';
+            }, 150);
+
+            getDots().forEach((d, i) => d.classList.toggle('active', i === current));
+        }
+
+        /* ── Arrow helper ── */
+        function changeSlide(dir) {
+            goTo(current + dir);
+        }
+
+        /* ── Keyboard navigation ── */
+        document.addEventListener('keydown', (e) => {
+            if (!modal.classList.contains('open')) return;
+            if (e.key === 'ArrowLeft')  changeSlide(-1);
+            if (e.key === 'ArrowRight') changeSlide(1);
+            if (e.key === 'Escape')     closeModal();
+        });
+
+        /* Expose to inline onclick attributes */
+        window.openModal   = openModal;
+        window.closeModal  = closeModal;
+        window.changeSlide = changeSlide;
+    })();
+    </script>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav" id="bottomNav">
+        <button class="nav-item active" onclick="navigateToPage('home')" data-page="home">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+            <span class="nav-label">Home</span>
+        </button>
+        <button class="nav-item" onclick="navigateToPage('profile')" data-page="profile">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+            <span class="nav-label">Profile</span>
+        </button>
+        <button class="nav-item" onclick="navigateToPage('skills')" data-page="skills">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+            </svg>
+            <span class="nav-label">Skills</span>
+        </button>
+        <button class="nav-item" onclick="navigateToPage('projects')" data-page="projects">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+            </svg>
+            <span class="nav-label">Projects</span>
+        </button>
+        <button class="nav-item" onclick="navigateToPage('certificates')" data-page="certificates">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+            </svg>
+            <span class="nav-label">Certificates</span>
+        </button>
+    </nav>
+
+    <script src="script.js"></script>
+</body>
+</html>
