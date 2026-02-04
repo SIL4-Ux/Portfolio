@@ -1487,3 +1487,81 @@ body {
         grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
     }
 }
+
+/* ===== TYPING ANIMATION STYLES ===== */
+
+/* Typing Container */
+.typing-container {
+    margin-bottom: 30px;
+    animation: fadeInUp 0.8s ease-out both;
+}
+
+/* Typing Wrapper */
+.typing-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80px;
+    gap: 2px;
+}
+
+/* Typed Text */
+.typed-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--text-light) 0%, var(--accent-bright) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    white-space: nowrap;
+}
+
+/* Typing Cursor */
+.typing-cursor {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 300;
+    color: var(--accent-bright);
+    animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+    0%, 49% {
+        opacity: 1;
+    }
+    50%, 100% {
+        opacity: 0;
+    }
+}
+
+/* Adjust home-title spacing */
+.home-title {
+    margin-top: 10px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .typed-text,
+    .typing-cursor {
+        font-size: 2rem;
+    }
+    
+    .typing-wrapper {
+        min-height: 60px;
+    }
+    
+    .typing-container {
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .typed-text,
+    .typing-cursor {
+        font-size: 1.5rem;
+    }
+    
+    .typing-wrapper {
+        min-height: 50px;
+    }
+}

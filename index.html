@@ -17,6 +17,14 @@
         <section id="home" class="page active">
             <div class="home-content">
                 <div class="welcome-text">
+                    <!-- Typing Animation -->
+                    <div class="typing-container">
+                        <div class="typing-wrapper">
+                            <span class="typed-text"></span>
+                            <span class="typing-cursor">|</span>
+                        </div>
+                    </div>
+                    
                     <h1 class="home-title">Welcome to My Portfolio</h1>
                     <p class="home-subtitle">Get to know me more!</p>
                     <button class="explore-btn" onclick="navigateToPage('profile')">
@@ -618,7 +626,53 @@
         </section>
 
     </div>
-
+    <!-- Typing Animation Script (add before closing </body> tag or in script.js) -->
+    <script>
+    // Typing Animation for "Hi I Am Cesmar!"
+    (function() {
+        const text = "Hi I Am Cesmar!";
+        let charIndex = 0;
+        let isDeleting = false;
+        let typingDelay = 150;
+        let erasingDelay = 100;
+        let pauseEnd = 2000;
+        let pauseStart = 1000;
+        
+        const typedTextElement = document.querySelector('.typed-text');
+        
+        function type() {
+            if (!typedTextElement) return;
+            
+            if (isDeleting) {
+                typedTextElement.textContent = text.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typedTextElement.textContent = text.substring(0, charIndex + 1);
+                charIndex++;
+            }
+            
+            let typeSpeed = isDeleting ? erasingDelay : typingDelay;
+            
+            // When text is fully typed
+            if (!isDeleting && charIndex === text.length) {
+                typeSpeed = pauseEnd;
+                isDeleting = true;
+            } 
+            // When text is fully erased
+            else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                typeSpeed = pauseStart;
+            }
+            
+            setTimeout(type, typeSpeed);
+        }
+        
+        // Start typing animation when page loads
+        if (typedTextElement) {
+            setTimeout(type, 500);
+        }
+    })();
+    </script>
         <!-- ───────── MODAL SCRIPT ───────── -->
         <script>
         (function () {
